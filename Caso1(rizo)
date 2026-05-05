@@ -351,21 +351,23 @@ if any(CL_req > CLmax)
 end
 
 % Puntos A y B
-med = round(length(CL_req) / 2)
+med = round(length(CL_req) / 2);
 plot(0,   CL_req(1),   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
 plot(180, CL_req(med), 'bs','MarkerFaceColor','b','MarkerSize',8,'HandleVisibility','off');
+plot(360,   CL_req(end),   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
 text(5,   CL_req(1)+0.03,  'A','Color','r','FontWeight','bold');
 text(173, CL_req(med)+0.03,'B','Color','b','FontWeight','bold');
+text(350,   CL_req(end)+0.03,  'A','Color','r','FontWeight','bold');
 
 grid on;
 xlabel('\phi [°]'); ylabel('C_L [-]');
 title('Coeficiente de sustentación requerido a lo largo del rizo','FontWeight','bold');
 legend('Location','northeast');
-xlim([0 180]); xticks(0:30:180);
+xlim([0 360]); xticks(0:30:360);
 
 % ── Figura 3: n(phi) ─────────────────────────────────────────
 figure('Name','Factor de carga','Color','w','Position',[570 430 650 340]);
-
+med = round(length(n_req) / 2);
 plot(phi_deg, n_req, 'b-', 'LineWidth', 2, 'DisplayName','n requerido');
 hold on;
 yline(n_max, 'r--', 'LineWidth', 1.5, 'DisplayName', ...
@@ -376,15 +378,17 @@ yline(1, 'k--', 'LineWidth', 0.8, 'DisplayName','n = 1 g (nivel)');
 yline(0, 'k-',  'LineWidth', 0.8, 'HandleVisibility','off');
 
 plot(0,   n_req(1),   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
-plot(180, n_req(end), 'bs','MarkerFaceColor','b','MarkerSize',8,'HandleVisibility','off');
+plot(180, n_req(med), 'bs','MarkerFaceColor','b','MarkerSize',8,'HandleVisibility','off');
+plot(360,   n_req(end),   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
 text(5,   n_req(1)+0.15,  'A','Color','r','FontWeight','bold');
-text(173, n_req(end)+0.15,'B','Color','b','FontWeight','bold');
+text(173, n_req(med)+0.15,'B','Color','b','FontWeight','bold');
+text(350,   n_req(end)+0.15,  'A','Color','r','FontWeight','bold');
 
 grid on;
 xlabel('\phi [°]'); ylabel('n [g]');
 title('Factor de carga a lo largo del rizo','FontWeight','bold');
 legend('Location','northeast');
-xlim([0 180]); xticks(0:30:180);
+xlim([0 360]); xticks(0:30:360);
 
 % ── Figura 4: T_req(phi) ─────────────────────────────────────
 figure('Name','Empuje requerido','Color','w','Position',[50 580 650 340]);
@@ -402,16 +406,19 @@ if any(T_req > T_max)
         'r','FaceAlpha',0.25,'EdgeColor','none','DisplayName','Déficit de empuje');
 end
 
+med = round(length(T_req) / 2);
 plot(0,   T_req(1)/1000,   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
-plot(180, T_req(end)/1000, 'bs','MarkerFaceColor','b','MarkerSize',8,'HandleVisibility','off');
+plot(180, T_req(med)/1000, 'bs','MarkerFaceColor','b','MarkerSize',8,'HandleVisibility','off');
+plot(360,   T_req(end)/1000,   'ro','MarkerFaceColor','r','MarkerSize',8,'HandleVisibility','off');
 text(5,   T_req(1)/1000+0.2,  'A','Color','r','FontWeight','bold');
-text(173, T_req(end)/1000+0.2,'B','Color','b','FontWeight','bold');
+text(173, T_req(med)/1000+0.2,'B','Color','b','FontWeight','bold');
+text(350,   T_req(end)/1000+0.2,  'A','Color','r','FontWeight','bold');
 
 grid on;
 xlabel('\phi [°]'); ylabel('T [kN]');
 title('Empuje requerido a lo largo del rizo','FontWeight','bold');
 legend('Location','northeast');
-xlim([0 180]); xticks(0:30:180);
+xlim([0 360]); xticks(0:30:360);
 
 % ── Figura 5: Envolvente V-n ─────
 %
