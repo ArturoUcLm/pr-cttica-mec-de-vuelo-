@@ -584,3 +584,32 @@ title(sprintf('Sensibilidad del factor de carga al radio  (V = %.0f m/s)', V), .
       'FontWeight','bold');
 xlim([0 360]); xticks(0:45:360);
 text(185, n_max*0.92, '\leftarrow B (phi=180°)', 'FontSize', 9, 'Color', [0.3 0.3 0.3]);
+
+%%============================================================
+%BLOQUE EXTRA 
+%Voy a comparar cómo varía el empuje disponible con la velocidad para ambos tipos de planta propulsiva.
+
+V_b=linspace(40,250,500);%Barrido de velocidades[m/s]
+T_jet=T_max*ones(size(V_b));%TurborreactoR:Empuje constante
+
+%Para compararlo voy a poner los siguientes valores Tjet=(15800N)y la velocidad v=(140 m/s)por lo que despejando de esta formula P=(T*V)/Np =(15800*140)/0.8=2.765 MW
+Pa=2.77*10^6;%[W]Potencia mecánica al eje
+Np=0.8;%Rendimiento de la hélice he cogido el 0.8 ya que mirando en internét me ponia que habia un rango de entre el 80-85% de rendimientos para estos motores
+
+%Empuje del motor con hélice: este decrece con la velocidad (T=Np*P/V)
+T_p=(Np*Pa)./V_b; 
+
+%GRÁFICO
+figure('Name','Punto Extra:Variación de Empuje','Color','w','Position',[760 510 500 360]);
+plot(V_b, T_jet/1000,'k-','LineWidth',2,'DisplayName','Turborreactor(T=cte)');
+hold on;
+plot(V_b, T_p/1000,'b--','LineWidth', 2,'DisplayName','Alternativo+Hélice(T_p=NpPa/V)');
+
+%Marco el punto de la maniobra
+plot(V,T_max/1000,'*','MarkerSize',33,'DisplayName','Velocidad de maniobra(140 m/s)');
+grid on;
+xlabel('Velocidad de vuelo,V [m/s]');
+ylabel('Empuje Disponible,T_{disp} [kN]');
+title('Variación del empuje disponible con V');
+legend();
+ylim([0 35]);
