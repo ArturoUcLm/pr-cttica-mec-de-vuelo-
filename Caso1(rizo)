@@ -39,8 +39,8 @@ rho = 1.225;    % [kg/m³]  Densidad del aire
 g   = 9.81;     % [m/s²]   Gravedad
 
 % -- Parámetros de la maniobra --
-V   = 120;      % [m/s]    Velocidad de vuelo (constante)
-R   = 450;      % [m]      Radio del rizo
+V   = 41.82;      % [m/s]    Velocidad de vuelo (constante)
+R   = 100000000000000000000000000000;      % [m]      Radio del rizo
 
 % -- Polar parabólica: CD = CD0 + k·CL² --
 CD0 = 0.025;    % [-]      Resistencia parásita
