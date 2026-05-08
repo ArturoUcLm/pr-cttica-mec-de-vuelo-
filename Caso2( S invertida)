@@ -68,8 +68,8 @@ T_max = 15800;  % [N]      Empuje máximo del motor
 % ============================================================
 %  *** MODIFICA AQUÍ V y R para explorar distintos casos ***
 
-V = 140;        % [m/s]    Velocidad de vuelo (constante)
-R = 500;        % [m]      Radio de cada semicírculo
+V = 57.14;        % [m/s]    Velocidad de vuelo (constante)
+R = 1000000000000000000000000000000000000000000000000000000000;        % [m]      Radio de cada semicírculo
 
 % Radios adicionales para la comparativa del Bloque 8
 radios_comp = [400, 500, 600, 800];   % [m]
